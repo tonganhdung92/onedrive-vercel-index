@@ -6,7 +6,9 @@ import { useTranslation } from 'next-i18next'
 
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import Plyr from 'plyr-react'
+// import Plyr from 'plyr-react'
+import dynamic from 'next/dynamic'
+import type Plyr from 'plyr-react'
 import { useAsync } from 'react-async-hook'
 import { useClipboard } from 'use-clipboard-copy'
 
@@ -18,6 +20,7 @@ import { DownloadButton } from '../DownloadBtnGtoup'
 import { DownloadBtnContainer, PreviewContainer } from './Containers'
 import FourOhFour from '../FourOhFour'
 import Loading from '../Loading'
+const Plyr = dynamic(() => import('plyr-react'), { ssr: false });
 import CustomEmbedLinkMenu from '../CustomEmbedLinkMenu'
 
 import 'plyr-react/plyr.css'
@@ -43,6 +46,7 @@ const VideoPlayer: FC<{
       .catch(() => {
         console.log('Could not load subtitle.')
       })
+    
 
     if (isFlv) {
       const loadFlv = () => {
@@ -70,8 +74,7 @@ const VideoPlayer: FC<{
   if (!isFlv) {
     // If the video is not in flv format, we can use the native plyr and add sources directly with the video URL
     plyrSource['sources'] = [{ src: videoUrl }]
-  }
-  return <Plyr id="plyr" source={plyrSource as Plyr.SourceInfo} options={plyrOptions} />
+  }lyr id="plyr" source={plyrSource as Plyr.SourceInfo} options={plyrOptions} />
 }
 
 const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
