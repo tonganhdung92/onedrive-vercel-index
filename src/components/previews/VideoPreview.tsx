@@ -5,6 +5,9 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import axios from 'axios'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
 import toast from 'react-hot-toast'
 // import Plyr from 'plyr-react'
 import dynamic from 'next/dynamic'
