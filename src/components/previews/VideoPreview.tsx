@@ -4,9 +4,13 @@ import { FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import dynamic from 'next/dynamic';
+import type Plyr from 'plyr-react';
+import 'plyr-react/plyr.css'
+
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import Plyr from 'plyr-react'
+const Plyr = dynamic(() => import('plyr-react'), { ssr: false });
 import { useAsync } from 'react-async-hook'
 import { useClipboard } from 'use-clipboard-copy'
 
